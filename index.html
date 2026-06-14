@@ -324,6 +324,42 @@
     .header h1 { font-size: 20px; }
     .day-chip { padding: 7px 11px; min-width: 48px; }
   }
+
+  /* Font size control bar */
+  .font-bar {
+    display: flex; align-items: center; justify-content: flex-end;
+    gap: 8px; padding: 10px 16px 2px;
+  }
+  .font-bar-label { font-size: 12px; color: var(--muted); }
+  .font-btn {
+    width: 40px; height: 40px; border-radius: 10px;
+    border: 1.5px solid var(--border); background: white;
+    cursor: pointer; color: var(--text);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; transition: all 0.15s;
+  }
+  .font-btn:active { transform: scale(0.92); background: var(--paris-pale); }
+  .font-btn.fs-active { background: var(--paris); border-color: var(--paris); color: white; }
+
+  /* Large font mode */
+  body.fs-large { font-size: 19px; }
+  body.fs-large .tl-name { font-size: 19px; }
+  body.fs-large .tl-time { font-size: 16px; }
+  body.fs-large .tl-meta { font-size: 15px; }
+  body.fs-large .tl-note { font-size: 15px; }
+  body.fs-large .tl-dot { width: 14px; height: 14px; }
+  body.fs-large .tl-left { width: 58px; }
+  body.fs-large .day-chip-date { font-size: 20px; }
+  body.fs-large .day-chip-day { font-size: 13px; }
+  body.fs-large .day-chip { padding: 10px 16px; min-width: 64px; }
+  body.fs-large .day-theme { font-size: 16px; }
+  body.fs-large .status-badge { font-size: 14px; padding: 4px 10px; }
+  body.fs-large .flight-route { font-size: 18px; }
+  body.fs-large .flight-time { font-size: 15px; }
+  body.fs-large .check-text { font-size: 17px; }
+  body.fs-large .check-sub { font-size: 14px; }
+  body.fs-large .nav-btn { font-size: 12px; }
+  body.fs-large .nav-btn svg { width: 26px; height: 26px; }
 </style>
 </head>
 <body>
@@ -445,6 +481,11 @@
 
 <!-- ITINERARY -->
 <div class="section" id="itinerary">
+  <div class="font-bar">
+    <span class="font-bar-label">字體大小</span>
+    <button class="font-btn fs-active" id="fs-normal" onclick="setFontSize('normal')" aria-label="標準字體" title="標準">A</button>
+    <button class="font-btn" id="fs-large" onclick="setFontSize('large')" aria-label="放大字體" title="放大" style="font-size:20px;">A</button>
+  </div>
   <div class="day-scroll" id="dayScroll"></div>
   <div id="dayContent"></div>
 </div>
@@ -757,6 +798,28 @@ function showSection(id, btn) {
     renderNotes();
   }
 }
+
+// Font size control
+function setFontSize(size) {
+  if (size === 'large') {
+    document.body.classList.add('fs-large');
+    document.getElementById('fs-large').classList.add('fs-active');
+    document.getElementById('fs-normal').classList.remove('fs-active');
+  } else {
+    document.body.classList.remove('fs-large');
+    document.getElementById('fs-normal').classList.add('fs-active');
+    document.getElementById('fs-large').classList.remove('fs-active');
+  }
+  try { localStorage.setItem('travel_font_size', size); } catch(e) {}
+}
+
+// Restore saved font size preference
+(function() {
+  try {
+    const saved = localStorage.getItem('travel_font_size');
+    if (saved === 'large') setFontSize('large');
+  } catch(e) {}
+})();
 
 renderDayChips();
 renderDayContent();
