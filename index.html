@@ -214,6 +214,18 @@
   }
   .status-badge.confirmed { background: var(--done-pale); color: var(--done); }
   .status-badge.pending { background: var(--pending-pale); color: var(--pending); }
+  /* Maps button */
+  .maps-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 8px; padding: 7px 14px;
+    border-radius: 20px; font-size: 13px; font-weight: 600;
+    background: #E8F5E9; color: #2E7D32;
+    border: 1.5px solid #A5D6A7;
+    text-decoration: none; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .maps-btn:active { background: #C8E6C9; }
+  body.fs-large .maps-btn { font-size: 15px; padding: 9px 16px; }
   .day-theme {
     padding: 0 16px 12px;
     font-size: 13px; color: var(--muted); font-style: italic;
@@ -586,40 +598,40 @@ const DAYS = [
     date: '6/19', day: '五', city: 'paris',
     theme: '抵達巴黎 · 美食與藝術之夜',
     events: [
-      { time: '08:05', name: '✈️ 抵達 CDG 機場', meta: '🚗 Klook 專車接機', status: 'confirmed' },
-      { time: '10:00', name: '🏨 飯店寄放行李、梳洗', meta: '🚶 步行' },
-      { time: '13:15', name: '🍽 Le 39V 精緻午餐', meta: '🚕 Bolt（約 15 分鐘）', status: 'confirmed', note: '著裝：Smart Casual 正式休閒裝' },
-      { time: '16:30', name: '🏛 羅浮宮 Louvre', meta: '🚕 Bolt（約 10 分鐘）', status: 'confirmed', note: '週五開放至 21:45，建議停留 4 小時，晚間欣賞金字塔夜景' },
+      { time: '08:05', name: '✈️ 抵達 CDG 機場', meta: '🚗 Klook 專車接機', status: 'confirmed', maps: 'https://www.google.com/maps/search/?api=1&query=Charles+de+Gaulle+Airport+Paris' },
+      { time: '10:00', name: '🏨 飯店寄放行李、梳洗', meta: '🚶 步行', maps: 'https://maps.app.goo.gl/AQmHu7nW3223brqN8' },
+      { time: '13:15', name: '🍽 Le 39V 精緻午餐', meta: '🚕 Bolt（約 15 分鐘）', status: 'confirmed', note: '著裝：Smart Casual 正式休閒裝', maps: 'https://www.google.com/maps/search/?api=1&query=Le+39V+restaurant+Paris' },
+      { time: '16:30', name: '🏛 羅浮宮 Louvre', meta: '🚕 Bolt（約 10 分鐘）', status: 'confirmed', note: '週五開放至 21:45，建議停留 4 小時，晚間欣賞金字塔夜景', maps: 'https://www.google.com/maps/search/?api=1&query=Musée+du+Louvre+Paris' },
     ]
   },
   {
     date: '6/20', day: '六', city: 'paris',
     theme: '蒙馬特風情 · 河畔晚風',
     events: [
-      { time: '10:00', name: '⛪ 聖心堂 & 蒙馬特畫家村', meta: '🚕 Bolt（約 20 分鐘）', note: '俯瞰巴黎全景，最佳拍照時段' },
-      { time: '13:00', name: '🛍 聖圖安跳蚤市場 St-Ouen', meta: '🚕 Bolt（約 15 分鐘）', note: '爸爸挖寶重地，建議預留 3–4 小時' },
-      { time: '18:00', name: '🚢 塞納河遊船 Seine Cruise', meta: '🚕 Bolt（約 20 分鐘）', note: '西堤島登船捕捉夕陽，可選 17:30 / 18:00 / 18:30 / 19:00 場次' },
+      { time: '10:00', name: '⛪ 聖心堂 & 蒙馬特畫家村', meta: '🚕 Bolt（約 20 分鐘）', note: '俯瞰巴黎全景，最佳拍照時段', maps: 'https://www.google.com/maps/search/?api=1&query=Sacré-Cœur+Montmartre+Paris' },
+      { time: '13:00', name: '🛍 聖圖安跳蚤市場 St-Ouen', meta: '🚕 Bolt（約 15 分鐘）', note: '爸爸挖寶重地，建議預留 3–4 小時', maps: 'https://www.google.com/maps/search/?api=1&query=Marché+aux+Puces+Saint-Ouen+Paris' },
+      { time: '18:00', name: '🚢 塞納河遊船 Seine Cruise', meta: '🚕 Bolt（約 20 分鐘）', note: '西堤島登船捕捉夕陽，可選 17:30 / 18:00 / 18:30 / 19:00 場次', maps: 'https://www.google.com/maps/search/?api=1&query=Bateaux+Parisiens+Seine+River+Cruise' },
     ]
   },
   {
     date: '6/21', day: '日', city: 'paris',
     theme: '靈性彌撒 · 精品大道',
     events: [
-      { time: '10:30', name: '⛪ 聖敘爾比斯主日彌撒', meta: '🚇 地鐵 + 🚶 步行', note: '可欣賞著名大管風琴演奏' },
-      { time: '12:00', name: '🙏 奇蹟獎章小堂', meta: '🚶 步行（約 5 分鐘）', note: '附近有 CityPharma 可順道採購' },
-      { time: '13:00', name: '🍽 香榭麗舍 侯布雄', meta: '🚇 地鐵（約 15 分鐘）', status: 'pending', note: '⚠️ 務必於本週五去電再次確認訂位' },
-      { time: '15:30', name: '🛍 香榭麗舍大道精品購物', meta: '🚶 步行', note: '若天氣不佳可回羅浮宮補遊' },
+      { time: '10:30', name: '⛪ 聖敘爾比斯主日彌撒', meta: '🚇 地鐵 + 🚶 步行', note: '可欣賞著名大管風琴演奏', maps: 'https://www.google.com/maps/search/?api=1&query=Église+Saint-Sulpice+Paris' },
+      { time: '12:00', name: '🙏 奇蹟獎章小堂', meta: '🚶 步行（約 5 分鐘）', note: '附近有 CityPharma 可順道採購', maps: 'https://www.google.com/maps/search/?api=1&query=Chapelle+Notre-Dame+de+la+Médaille+Miraculeuse+Paris' },
+      { time: '13:00', name: '🍽 香榭麗舍 侯布雄', meta: '🚇 地鐵（約 15 分鐘）', status: 'pending', note: '⚠️ 務必於本週五去電再次確認訂位', maps: 'https://www.google.com/maps/search/?api=1&query=L+Atelier+de+Joel+Robuchon+Champs+Elysees+Paris' },
+      { time: '15:30', name: '🛍 香榭麗舍大道精品購物', meta: '🚶 步行', note: '若天氣不佳可回羅浮宮補遊', maps: 'https://www.google.com/maps/search/?api=1&query=Avenue+des+Champs-Élysées+Paris' },
     ]
   },
   {
     date: '6/22', day: '一', city: 'paris',
     theme: '經典巴黎 · 60 歲慶生大壽 🎂',
     events: [
-      { time: '09:30', name: '💎 聖禮拜堂 Sainte-Chapelle', meta: '🚇 地鐵（約 15 分鐘）' },
-      { time: '11:00', name: '⛪ 聖母院 Notre-Dame 登頂', meta: '🚶 步行（約 5 分鐘）' },
-      { time: '13:00', name: '🏛 奧塞美術館', meta: '🚇 地鐵 / 步行', note: '羅浮宮備用票 13:00 可用' },
-      { time: '15:30', name: '🛍 瑪黑區 & CityPharma 採買', meta: '🚶 步行' },
-      { time: '21:00', name: '🗼 艾菲爾鐵塔慶生晚宴 🎂', meta: '🚕 Bolt（約 20 分鐘）', status: 'confirmed', note: '今日重頭戲！著裝：Smart Casual 正式休閒裝' },
+      { time: '09:30', name: '💎 聖禮拜堂 Sainte-Chapelle', meta: '🚇 地鐵（約 15 分鐘）', maps: 'https://www.google.com/maps/search/?api=1&query=Sainte-Chapelle+Paris' },
+      { time: '11:00', name: '⛪ 聖母院 Notre-Dame 登頂', meta: '🚶 步行（約 5 分鐘）', maps: 'https://www.google.com/maps/search/?api=1&query=Cathédrale+Notre-Dame+de+Paris' },
+      { time: '13:00', name: '🏛 奧塞美術館', meta: '🚇 地鐵 / 步行', note: '羅浮宮備用票 13:00 可用', maps: 'https://www.google.com/maps/search/?api=1&query=Musée+d+Orsay+Paris' },
+      { time: '15:30', name: '🛍 瑪黑區 & CityPharma 採買', meta: '🚶 步行', maps: 'https://www.google.com/maps/search/?api=1&query=Le+Marais+Paris' },
+      { time: '21:00', name: '🗼 艾菲爾鐵塔慶生晚宴 🎂', meta: '🚕 Bolt（約 20 分鐘）', status: 'confirmed', note: '今日重頭戲！著裝：Smart Casual 正式休閒裝', maps: 'https://www.google.com/maps/search/?api=1&query=Tour+Eiffel+Paris' },
     ]
   },
   {
@@ -627,41 +639,41 @@ const DAYS = [
     theme: 'La Vallée Village 全日購物衝刺',
     events: [
       { time: '10:00', name: '🚗 出發前往 Outlet', meta: '🚗 包車（確認中，備用 Uber）', note: '沿 A4 高速公路，車程約 40 分鐘' },
-      { time: '10:45', name: '🛍 La Vallée Village 精品折扣', meta: '🚶 園區內步行', note: '現場務必辦理退稅手續 Global Blue / Premier Tax Free' },
-      { time: '17:30', name: '🏠 返回巴黎市區', meta: '🚗 包車回程（易塞車）' },
+      { time: '10:45', name: '🛍 La Vallée Village 精品折扣', meta: '🚶 園區內步行', note: '現場務必辦理退稅手續 Global Blue / Premier Tax Free', maps: 'https://www.google.com/maps/search/?api=1&query=La+Vallée+Village+Outlet+Serris' },
+      { time: '17:30', name: '🏠 返回巴黎市區', meta: '🚗 包車回程（易塞車）', maps: 'https://maps.app.goo.gl/AQmHu7nW3223brqN8' },
     ]
   },
   {
     date: '6/24', day: '三', city: 'paris',
     theme: '運河告別 · Eurostar · 阿姆斯特丹',
     events: [
-      { time: '09:00', name: '🧳 辦理退房 & 行李分工', meta: '🚶 步行', note: '佑和容辦理退房；張爸和阿姨先往百貨' },
-      { time: '11:30', name: '🌿 聖馬丁運河野餐', meta: '🚇 地鐵（約 20 分鐘）' },
-      { time: '14:00', name: '🏛 北站周邊小法國區', meta: '🚶 步行（約 15 分鐘）' },
-      { time: '15:35', name: '⚠️ 最晚抵達巴黎北站', meta: '🚊 前往 Gare du Nord', note: '邊檢海關 + 安檢需 50 分鐘！務必準時', status: 'pending' },
-      { time: '16:25', name: '🚄 Eurostar 出發', meta: '🚄 車程約 3.5 小時', status: 'confirmed' },
-      { time: '20:30', name: '🌙 阿姆斯特丹運河區漫步', meta: '🚶 步行' },
+      { time: '09:00', name: '🧳 辦理退房 & 行李分工', meta: '🚶 步行', note: '佑和容辦理退房；張爸和阿姨先往百貨', maps: 'https://maps.app.goo.gl/AQmHu7nW3223brqN8' },
+      { time: '11:30', name: '🌿 聖馬丁運河野餐', meta: '🚇 地鐵（約 20 分鐘）', maps: 'https://www.google.com/maps/search/?api=1&query=Canal+Saint-Martin+Paris' },
+      { time: '14:00', name: '🏛 北站周邊小法國區', meta: '🚶 步行（約 15 分鐘）', maps: 'https://www.google.com/maps/search/?api=1&query=Gare+du+Nord+Paris' },
+      { time: '15:35', name: '⚠️ 最晚抵達巴黎北站', meta: '🚊 前往 Gare du Nord', note: '邊檢海關 + 安檢需 50 分鐘！務必準時', status: 'pending', maps: 'https://www.google.com/maps/search/?api=1&query=Gare+du+Nord+Paris' },
+      { time: '16:25', name: '🚄 Eurostar 出發', meta: '🚄 車程約 3.5 小時', status: 'confirmed', maps: 'https://www.google.com/maps/search/?api=1&query=Gare+du+Nord+Paris' },
+      { time: '20:30', name: '🌙 阿姆斯特丹運河區漫步', meta: '🚶 步行', maps: 'https://maps.app.goo.gl/hepB8npqrhxbnarj8' },
     ]
   },
   {
     date: '6/25', day: '四', city: 'amsterdam',
     theme: '女王百貨折扣日 · 自駕電動船',
     events: [
-      { time: '10:00', name: '🛍 Bijenkorf 女王百貨', meta: '🚶 步行 / 🚊 輕軌', note: '一年一度夏季折扣首日！' },
-      { time: '10:00', name: '🏘 九小街 The 9 Streets', meta: '🚶 步行', note: '荷蘭本土設計選物與餐瓷' },
-      { time: '14:30', name: '🖼 荷蘭國家博物館', meta: '🚶 步行（約 15 分鐘）' },
-      { time: '17:00', name: '⛵ 全家自駕電動船', meta: '⛵ 博物館附近碼頭出發', note: '阿姆斯特丹最獨特的家庭體驗' },
+      { time: '10:00', name: '🛍 Bijenkorf 女王百貨', meta: '🚶 步行 / 🚊 輕軌', note: '一年一度夏季折扣首日！', maps: 'https://www.google.com/maps/search/?api=1&query=De+Bijenkorf+Amsterdam' },
+      { time: '10:00', name: '🏘 九小街 The 9 Streets', meta: '🚶 步行', note: '荷蘭本土設計選物與餐瓷', maps: 'https://www.google.com/maps/search/?api=1&query=De+9+Straatjes+Amsterdam' },
+      { time: '14:30', name: '🖼 荷蘭國家博物館', meta: '🚶 步行（約 15 分鐘）', maps: 'https://www.google.com/maps/search/?api=1&query=Rijksmuseum+Amsterdam' },
+      { time: '17:00', name: '⛵ 全家自駕電動船', meta: '⛵ 博物館附近碼頭出發', note: '阿姆斯特丹最獨特的家庭體驗', maps: 'https://www.google.com/maps/search/?api=1&query=Rijksmuseum+Amsterdam' },
     ]
   },
   {
     date: '6/26', day: '五', city: 'amsterdam',
     theme: '梵谷藝術 · 重機文化',
     events: [
-      { time: '10:00', name: '🧺 Albert Cuyp 市集', meta: '🚊 輕軌' },
-      { time: '13:45', name: '🎨 梵谷博物館 Van Gogh Museum', meta: '🚊 輕軌 / 步行', status: 'pending', note: '⚠️ 尚未預約！停留約 2.5 小時，請即刻訂票' },
-      { time: '16:30', name: '☕ Rusty Gold MotorShop', meta: '🚊 輕軌（約 15 分鐘）', note: '重機文化咖啡店，爸爸必訪' },
-      { time: '18:00', name: '🧥 PME Legend 旗艦店', meta: '🚶 步行' },
-      { time: '19:30', name: '⛪ 閣樓上的秘密教堂', meta: '🚶 步行（約 15 分鐘）', note: '隱藏歷史，限時參觀需查詢開放時間' },
+      { time: '10:00', name: '🧺 Albert Cuyp 市集', meta: '🚊 輕軌', maps: 'https://www.google.com/maps/search/?api=1&query=Albert+Cuyp+Market+Amsterdam' },
+      { time: '13:45', name: '🎨 梵谷博物館 Van Gogh Museum', meta: '🚊 輕軌 / 步行', status: 'pending', note: '⚠️ 尚未預約！停留約 2.5 小時，請即刻訂票', maps: 'https://www.google.com/maps/search/?api=1&query=Van+Gogh+Museum+Amsterdam' },
+      { time: '16:30', name: '☕ Rusty Gold MotorShop', meta: '🚊 輕軌（約 15 分鐘）', note: '重機文化咖啡店，爸爸必訪', maps: 'https://www.google.com/maps/search/?api=1&query=Rusty+Gold+MotorShop+Amsterdam' },
+      { time: '18:00', name: '🧥 PME Legend 旗艦店', meta: '🚶 步行', maps: 'https://www.google.com/maps/search/?api=1&query=PME+Legend+Amsterdam' },
+      { time: '19:30', name: '⛪ 閣樓上的秘密教堂', meta: '🚶 步行（約 15 分鐘）', note: '隱藏歷史，限時參觀需查詢開放時間', maps: 'https://www.google.com/maps/search/?api=1&query=Museum+Ons+Lieve+Heer+op+Solder+Amsterdam' },
       { time: '22:00', name: '🌙 運河夜遊', meta: '🚢 碼頭出發' },
     ]
   },
@@ -669,12 +681,12 @@ const DAYS = [
     date: '6/27', day: '六', city: 'amsterdam',
     theme: '最後挖寶 · 整理退稅 · 返程台北',
     events: [
-      { time: '07:00', name: '🍳 Omelegg 早餐', meta: '🚶 步行' },
-      { time: '08:00', name: '🥐 Winkel 43 早市', meta: '🚶 步行' },
-      { time: '10:00', name: '🌾 Noordermarket 農夫市集', meta: '🚶 步行' },
-      { time: '13:00', name: '🏺 Spiegelkwartier 骨董街', meta: '🚶 步行（約 10 分鐘）', note: '最後挖寶機會！' },
-      { time: '15:30', name: '🧳 取行李 & 整理退稅單', meta: '🚶 步行', note: '退稅單請確認全部已填妥蓋章' },
-      { time: '18:00', name: '🚗 專車送往 Schiphol 機場', meta: '🚗 約 30 分鐘車程' },
+      { time: '07:00', name: '🍳 Omelegg 早餐', meta: '🚶 步行', maps: 'https://www.google.com/maps/search/?api=1&query=Omelegg+Amsterdam' },
+      { time: '08:00', name: '🥐 Winkel 43 早市', meta: '🚶 步行', maps: 'https://www.google.com/maps/search/?api=1&query=Winkel+43+Amsterdam' },
+      { time: '10:00', name: '🌾 Noordermarket 農夫市集', meta: '🚶 步行', maps: 'https://www.google.com/maps/search/?api=1&query=Noordermarkt+Amsterdam' },
+      { time: '13:00', name: '🏺 Spiegelkwartier 骨董街', meta: '🚶 步行（約 10 分鐘）', note: '最後挖寶機會！', maps: 'https://www.google.com/maps/search/?api=1&query=Spiegelkwartier+Amsterdam' },
+      { time: '15:30', name: '🧳 取行李 & 整理退稅單', meta: '🚶 步行', note: '退稅單請確認全部已填妥蓋章', maps: 'https://maps.app.goo.gl/hepB8npqrhxbnarj8' },
+      { time: '18:00', name: '🚗 專車送往 Schiphol 機場', meta: '🚗 約 30 分鐘車程', maps: 'https://www.google.com/maps/search/?api=1&query=Amsterdam+Airport+Schiphol' },
       { time: '21:40', name: '✈️ BR076 起飛 返回台北', meta: '🏠 06/28 20:10 抵達', status: 'confirmed' },
     ]
   },
@@ -724,6 +736,9 @@ function renderDayContent() {
     if (ev.status === 'confirmed') statusBadge = '<div class="status-badge confirmed">✅ 已預約</div>';
     if (ev.status === 'pending') statusBadge = '<div class="status-badge pending">⏳ 待確認</div>';
 
+    const mapsBtn = ev.maps
+      ? `<a href="${ev.maps}" target="_blank" class="maps-btn" onclick="event.stopPropagation()">📍 在地圖上查看</a>`
+      : '';
     html += `<div class="tl-item">
       <div class="tl-left">
         <div class="tl-time">${ev.time}</div>
@@ -735,6 +750,7 @@ function renderDayContent() {
         <div class="tl-meta">${ev.meta}</div>
         ${statusBadge}
         ${ev.note ? `<div class="tl-note">${ev.note}</div>` : ''}
+        ${mapsBtn}
       </div>
     </div>`;
   });
